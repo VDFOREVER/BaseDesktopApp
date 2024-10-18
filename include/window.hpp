@@ -4,29 +4,26 @@
 #include <stdint.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <gui.hpp>
 #include <memory>
 
 class Window {
     public:
-        Window(const std::string title, const uint width, const uint height);
+        Window(const std::string title, const uint32_t width, const uint32_t height);
         ~Window();
 
         bool is_close();
-        uint get_width() const { return m_data.width; }
-        uint get_height() const { return m_data.height; }
+        uint32_t get_width() const { return m_data.width; }
+        uint32_t get_height() const { return m_data.height; }
+        GLFWwindow* get_native_window() const { return m_Window; }
         void on_update();
-
-        std::shared_ptr<Gui> gui;
 
     private:
         GLFWwindow* m_Window;
 
         struct WindowData {
             std::string title;
-            uint width;
-            uint height;
-            //EventCallbackFn eventCallbackFn;
+            uint32_t width;
+            uint32_t height;
         };
 
         WindowData m_data;

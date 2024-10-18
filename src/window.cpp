@@ -1,7 +1,7 @@
 #include <window.hpp>
 #include <log.hpp>
 
-Window::Window(const std::string title, const uint width, const uint height) : m_data({ std::move(title), width, height }) {
+Window::Window(const std::string title, const uint32_t width, const uint32_t height) : m_data({ std::move(title), width, height }) {
     if (!glfwInit()) {
         LOG_CRITICAL("GLFW Init");
         exit(1);
@@ -22,14 +22,10 @@ Window::Window(const std::string title, const uint width, const uint height) : m
     }
 
     glfwSetWindowUserPointer(m_Window, &m_data);
-    //glfwWindowHint( GLFW_DECORATED, GLFW_FALSE );
-
-    gui = std::make_shared<Gui>(m_Window);
 }
 
 Window::~Window() {
     LOG_INFO("Terminate GLFW");
-    glfwDestroyWindow(m_Window);
     glfwTerminate();
 }
 
