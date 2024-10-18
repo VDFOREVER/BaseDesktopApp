@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_library(${PROJECT_NAME} ${SRC_FILES})
-include_directories(include)
+target_include_directories(${PROJECT_NAME} PUBLIC include)
 
 add_subdirectory(subprojects/glfw)
 add_subdirectory(subprojects/glad)
